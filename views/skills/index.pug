@@ -1,0 +1,17 @@
+extends ../layouts/admin
+
+block content
+  h1 Skill Dashboard
+  a.btn.btn-primary.mb-3(href="/skills/new") + Add New Skill
+
+  if skills.length
+    each skill in skills
+      .card.mt-3.p-3.shadow-sm
+        h4= skill.name
+        p.mb-1 Category: #{skill.category}
+        .d-flex.gap-2
+          a.btn.btn-outline-secondary.btn-sm(href=`/skills/${skill._id}/edit`) Edit
+          form(method="POST", action=`/skills/${skill._id}/delete`)
+            button.btn.btn-danger.btn-sm(type="submit") Delete
+  else
+    p.text-muted No skills found.

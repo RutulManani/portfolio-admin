@@ -1,0 +1,12 @@
+extends ../layouts/admin
+
+block content
+  h1 Edit Skill
+  form(method="POST", action=`/skills/${skill._id}`)
+    .mb-3
+      label.form-label(for="name") Skill Name
+      input.form-control(type="text", name="name", value=skill.name)
+    .mb-3
+      label.form-label(for="category") Category
+      input.form-control(type="text", name="category", value=skill.category)
+    button.btn.btn-primary(type="submit") Update Skill

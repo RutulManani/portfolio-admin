@@ -1,0 +1,21 @@
+extends ../layouts/admin
+
+block content
+  h1 Add New Project
+  form(method="POST", action="/projects")
+    .mb-3
+      label.form-label(for="title") Title
+      input.form-control(type="text", name="title", required)
+    .mb-3
+      label.form-label(for="description") Description
+      input.form-control(type="text", name="description", required)
+    .mb-3
+      label.form-label(for="role") Role
+      input.form-control(type="text", name="role", required)
+    .mb-3
+      label.form-label(for="tags") Tags (comma separated)
+      input.form-control(type="text", name="tags", required)
+    .mb-3
+      label.form-label(for="image") Image URL
+      input.form-control(type="text", name="image", required)
+    button.btn.btn-success(type="submit") Add Project
