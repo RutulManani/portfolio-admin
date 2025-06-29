@@ -1,12 +1,13 @@
 extends ../layouts/admin
 
 block content
-  h1 Add New Skill
-  form(method="POST", action="/skills")
-    .mb-3
-      label.form-label(for="name") Skill Name
-      input.form-control(type="text", name="name", required)
-    .mb-3
-      label.form-label(for="category") Category
-      input.form-control(type="text", name="category", required)
-    button.btn.btn-success(type="submit") Add Skill
+  .container
+    h1.mb-4 Add New Skill
+    form(method="POST", action="/skills")
+      .mb-3
+        label.form-label(for="name") Skill Name
+        input.form-control(type="text", name="name", required)
+      .mb-3
+        label.form-label(for="category") Category
+        input.form-control(type="text", name="category", required)
+      button.btn.btn-success(type="submit") Add Skill

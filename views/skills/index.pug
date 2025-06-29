@@ -1,17 +1,21 @@
 extends ../layouts/admin
 
 block content
-  h1 Skill Dashboard
-  a.btn.btn-primary.mb-3(href="/skills/new") + Add New Skill
+  .container
+    h1.mb-4 Skill Dashboard
+    a.btn.btn-primary.mb-4(href="/skills/new") + Add New Skill
 
-  if skills.length
-    each skill in skills
-      .card.mt-3.p-3.shadow-sm
-        h4= skill.name
-        p.mb-1 Category: #{skill.category}
-        .d-flex.gap-2
-          a.btn.btn-outline-secondary.btn-sm(href=`/skills/${skill._id}/edit`) Edit
-          form(method="POST", action=`/skills/${skill._id}/delete`)
-            button.btn.btn-danger.btn-sm(type="submit") Delete
-  else
-    p.text-muted No skills found.
+    if skills.length
+      .row
+        each skill in skills
+          .col-md-6.col-lg-4.mb-4
+            .card.shadow-sm.h-100
+              .card-body
+                h5.card-title= skill.name
+                p.card-text Category: #{skill.category}
+              .card-footer.d-flex.justify-content-between
+                a.btn.btn-outline-secondary.btn-sm(href=`/skills/${skill._id}/edit`) Edit
+                form(method="POST", action=`/skills/${skill._id}/delete`, class="mb-0")
+                  button.btn.btn-danger.btn-sm(type="submit") Delete
+    else
+      p.text-muted No skills found.

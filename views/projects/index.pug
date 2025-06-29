@@ -1,20 +1,25 @@
 extends ../layouts/admin
 
 block content
-  h1 Project Dashboard
-  a.btn.btn-primary.mb-3(href="/projects/new") + Add New Project
+  .container
+    h1.mb-4 Project Dashboard
+    a.btn.btn-primary.mb-4(href="/projects/new") + Add New Project
 
-  if projects.length
-    each project in projects
-      .card.mt-3.p-3.shadow-sm
-        h3= project.title
-        p.mb-1 Description: #{project.description}
-        p.mb-1 Role: #{project.role}
-        p.mb-1 Tags: #{project.tags.join(', ')}
-        img(src=project.image, alt=project.title, width="150", class="mb-2")
-        .d-flex.gap-2
-          a.btn.btn-outline-secondary.btn-sm(href=`/projects/${project._id}/edit`) Edit
-          form(method="POST", action=`/projects/${project._id}/delete`)
-            button.btn.btn-danger.btn-sm(type="submit") Delete
-  else
-    p.text-muted No projects found.
+    if projects.length
+      .row
+        each project in projects
+          .col-md-6.col-lg-4.mb-4
+            .card.shadow-sm.h-100
+              .card-body
+                h5.card-title= project.title
+                p.card-text.mb-1 Description: #{project.description}
+                p.card-text.mb-1 Role: #{project.role}
+                p.card-text.mb-1 Tags: #{project.tags.join(', ')}
+              if project.image
+                img.card-img-bottom(src=project.image, alt=project.title, style="max-height:200px; object-fit:cover;")
+              .card-footer.d-flex.justify-content-between
+                a.btn.btn-outline-secondary.btn-sm(href=`/projects/${project._id}/edit`) Edit
+                form(method="POST", action=`/projects/${project._id}/delete`, class="mb-0")
+                  button.btn.btn-danger.btn-sm(type="submit") Delete
+    else
+      p.text-muted No projects found.
