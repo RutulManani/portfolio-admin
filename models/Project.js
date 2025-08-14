@@ -6,7 +6,6 @@ const projectSchema = new mongoose.Schema({
   role: String,
   tags: [String],
   image: String,
-  url: String,
   techStack: [String],
 });
 

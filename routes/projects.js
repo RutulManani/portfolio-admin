@@ -15,8 +15,15 @@ router.get('/new', (req, res) => {
 
 // Create project
 router.post('/', async (req, res) => {
-  const { title, description, role, tags, image } = req.body;
-  await Project.create({ title, description, role, tags: tags.split(','), image });
+  const { title, description, role, tags, image, techStack } = req.body;
+  await Project.create({ 
+    title,
+    description,
+    role,
+    tags: tags.split(',').map(t => t.trim()),
+    techStack: techStack.split(',').map(t => t.trim()),
+    image
+  });
   res.redirect('/projects');
 });
 
@@ -28,12 +35,13 @@ router.get('/:id/edit', async (req, res) => {
 
 // Update project
 router.post('/:id', async (req, res) => {
-  const { title, description, role, tags, image } = req.body;
+  const { title, description, role, tags, image, techStack } = req.body;
   await Project.findByIdAndUpdate(req.params.id, {
     title,
     description,
     role,
-    tags: tags.split(','),
+    tags: tags.split(',').map(t => t.trim()),
+    techStack: techStack.split(',').map(t => t.trim()),
     image
   });
   res.redirect('/projects');
