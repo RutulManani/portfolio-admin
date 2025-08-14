@@ -5,7 +5,9 @@ const projectSchema = new mongoose.Schema({
   description: String,
   role: String,
   tags: [String],
-  image: String
+  image: String,
+  url: String,
+  techStack: [String],
 });
 
 const Project = mongoose.model('Project', projectSchema);
