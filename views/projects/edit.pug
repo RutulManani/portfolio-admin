@@ -17,6 +17,13 @@ block content
         label.form-label(for="tags") Tags (comma separated)
         input.form-control(type="text", name="tags", value=project.tags.join(','))
       .mb-3
+        label.form-label(for="techStack") Tech Stack (comma separated)
+        input.form-control(
+          type="text", 
+          name="techStack", 
+          value=project.techStack ? project.techStack.join(', ') : ''
+        )
+      .mb-3
         label.form-label(for="image") Image URL
         input.form-control(type="text", name="image", value=project.image)
       button.btn.btn-primary(type="submit") Update Project

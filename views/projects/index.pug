@@ -15,6 +15,8 @@ block content
                 p.card-text.mb-1 Description: #{project.description}
                 p.card-text.mb-1 Role: #{project.role}
                 p.card-text.mb-1 Tags: #{project.tags.join(', ')}
+                if project.techStack && project.techStack.length
+                  p.card-text.mb-1 Tech: #{project.techStack.join(', ')}
               if project.image
                 img.card-img-bottom(src=project.image, alt=project.title, style="max-height:200px; object-fit:cover;")
               .card-footer.d-flex.justify-content-between
